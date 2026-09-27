@@ -1,5 +1,7 @@
 (() => {
-    const LOGIN_PATH = '/login';
+    const siteUrl = path => new URL(path.replace(/^\/+/, ''), document.baseURI).pathname;
+    const LOGIN_PATH = siteUrl('login/');
+    const DASHBOARD_PATH = siteUrl('');
     const STORAGE_KEY = 'robin-auth-session';
     const DEFAULT_USERNAME = 'admin';
     const DEFAULT_PASSWORD = 'Robin1404!';
@@ -11,7 +13,7 @@
 
     const normalizePath = path => path.replace(/\/$/, '') || '/';
     const path = normalizePath(window.location.pathname);
-    const isLoginPage = path === LOGIN_PATH;
+    const isLoginPage = path === normalizePath(LOGIN_PATH);
 
     function readUser() {
         try {
@@ -27,7 +29,7 @@
     }
 
     function goToDashboard() {
-        window.location.replace('/');
+        window.location.replace(DASHBOARD_PATH);
     }
 
     window.RobinAuth = {

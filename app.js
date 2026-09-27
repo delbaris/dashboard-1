@@ -229,7 +229,12 @@
         icon: 'folder'
     }
     ];
-    const pathname = location.pathname.replace(/\/$/, '') || '/';
+    const siteBasePath = new URL(document.baseURI).pathname;
+    const locationPath = location.pathname;
+    const pathname = locationPath.startsWith(siteBasePath)
+        ? `/${locationPath.slice(siteBasePath.length).replace(/^\/|\/$/g, '')}`
+        : locationPath.replace(/\/$/, '') || '/';
+    const siteUrl = path => new URL(path.replace(/^\/+/, ''), document.baseURI).pathname;
     const current = routes.find(route => route.href === pathname) || routes[0];
     const root = document.getElementById('app');
     const dateLabel = new Intl.DateTimeFormat('fa-IR', {
@@ -241,16 +246,16 @@
 
     function sidebar() {
         return `<aside class="sidebar" id="sidebar" aria-label="منوی اصلی">
-      <a class="brand" href="/" aria-label="رفتن به داشبورد"><span class="brand-mark"><img src="/robin-mark.svg" alt=""></span><span><span class="brand-name">پردازش روبین پرهام</span><span class="brand-caption">مدیریت یکپارچه سازمان</span></span></a>
+      <a class="brand" href="${siteUrl('/')}" aria-label="رفتن به داشبورد"><span class="brand-mark"><img src="${siteUrl('robin-mark.svg')}" alt=""></span><span><span class="brand-name">پردازش روبین پرهام</span><span class="brand-caption">مدیریت یکپارچه سازمان</span></span></a>
       <button class="sidebar-close-button" type="button" aria-label="بستن منو">${icon('close')}</button>
       <div class="sidebar-label">فضای کاری</div>
-      <nav class="nav-list">${routes.map(route => `<a class="nav-link ${current.id === route.id ? 'active' : ''}" href="${route.href}" ${current.id === route.id ? 'aria-current="page"' : ''}>${icon(route.icon)}<span>${route.label}</span></a>`).join('')}</nav>
+      <nav class="nav-list">${routes.map(route => `<a class="nav-link ${current.id === route.id ? 'active' : ''}" href="${siteUrl(route.href)}" ${current.id === route.id ? 'aria-current="page"' : ''}>${icon(route.icon)}<span>${route.label}</span></a>`).join('')}</nav>
       <div class="sidebar-bottom"><div class="sidebar-note"><strong>خلاصه امروز</strong><p>همه شاخص‌ها به‌روز هستند. آخرین همگام‌سازی: همین حالا</p></div><div class="sidebar-profile"><div class="avatar">م‌خ</div><div class="profile-meta"><strong>${data.manager}</strong><span>${data.role}</span></div><button class="logout-button" id="logoutButton" type="button" aria-label="خروج از حساب کاربری">${icon('logout')}<span>خروج</span></button></div></div>
     </aside>`;
     }
 
     function header() {
-        return `<header class="topbar"><div class="topbar-start"><button class="icon-button menu-toggle" id="menuToggle" aria-label="باز کردن منوی کناری" aria-expanded="false">${icon('menu')}</button><a class="topbar-brand-mark" href="/" aria-label="پردازش روبین پرهام"><img src="/robin-mark.svg" alt=""></a><div class="page-context"><strong>${current.label}</strong><span>نمای کلی و مدیریت ${current.id === 'dashboard' ? 'سازمان' : current.label}</span></div></div><div class="topbar-actions"><label class="search-box" aria-label="جستجو">${icon('search')}<input id="globalSearch" type="search" placeholder="جستجو در این صفحه..." autocomplete="off"></label><button class="icon-button" id="notificationButton" aria-label="اعلان‌ها" aria-expanded="false">${icon('bell')}<span class="notification-dot"></span></button><button class="avatar topbar-avatar" id="profileButton" aria-label="حساب کاربری">م‌خ</button></div><section class="popover" id="notificationPopover" hidden><h3>اعلان‌های اخیر</h3><div class="popover-item">۳ مورد نیازمند پیگیری فوری در پروژه‌های فعال دارید.</div><div class="popover-item">جلسه استراتژی امروز ساعت ۱۰:۰۰ برگزار می‌شود.</div><div class="popover-item">گزارش مالی ماهانه برای بررسی آماده است.</div></section></header>`;
+        return `<header class="topbar"><div class="topbar-start"><button class="icon-button menu-toggle" id="menuToggle" aria-label="باز کردن منوی کناری" aria-expanded="false">${icon('menu')}</button><a class="topbar-brand-mark" href="${siteUrl('/')}" aria-label="پردازش روبین پرهام"><img src="${siteUrl('robin-mark.svg')}" alt=""></a><div class="page-context"><strong>${current.label}</strong><span>نمای کلی و مدیریت ${current.id === 'dashboard' ? 'سازمان' : current.label}</span></div></div><div class="topbar-actions"><label class="search-box" aria-label="جستجو">${icon('search')}<input id="globalSearch" type="search" placeholder="جستجو در این صفحه..." autocomplete="off"></label><button class="icon-button" id="notificationButton" aria-label="اعلان‌ها" aria-expanded="false">${icon('bell')}<span class="notification-dot"></span></button><button class="avatar topbar-avatar" id="profileButton" aria-label="حساب کاربری">م‌خ</button></div><section class="popover" id="notificationPopover" hidden><h3>اعلان‌های اخیر</h3><div class="popover-item">۳ مورد نیازمند پیگیری فوری در پروژه‌های فعال دارید.</div><div class="popover-item">جلسه استراتژی امروز ساعت ۱۰:۰۰ برگزار می‌شود.</div><div class="popover-item">گزارش مالی ماهانه برای بررسی آماده است.</div></section></header>`;
     }
 
     function sparkline(values, tone) {
