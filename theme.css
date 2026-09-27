@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-primary: #6f382f;
+    --color-primary-contrast: #ffffff;
+    --color-bg: #f7f5f0;
+    --color-surface: #ffffff;
+    --color-text: #1c2420;
+    --color-muted: #6b7268;
+    --color-border: #e9e6df;
+    --color-soft: #f0ede6;
+    --color-primary-soft: #f4e9e5;
+    --color-success: #22866a;
+    --color-success-soft: #e7f4ef;
+    --color-warning: #a86b16;
+    --color-warning-soft: #fff2dd;
+    --color-danger: #bd4952;
+    --color-danger-soft: #fcebed;
+    --color-blue: #4375aa;
+    --color-blue-soft: #eaf1f8;
+    --font-heading: 'Vazirmatn', 'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+    --font-body: 'Vazirmatn', 'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+    --radius: 16px;
+    --radius-small: 11px;
+    --shadow-soft: 0 10px 32px rgba(39, 33, 24, 0.055);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    background: var(--color-bg);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+a,
+input,
+select {
+    color: inherit;
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    color: var(--color-primary-contrast);
+    background: var(--color-primary);
+}

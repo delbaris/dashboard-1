@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f5f0">
+    <meta name="description" content="ورود امن به سامانه مدیریت پردازش روبین پرهام">
+    <title>ورود | پردازش روبین پرهام</title>
+    <link rel="icon" type="image/svg+xml" href="/robin-mark.svg">
+    <link rel="stylesheet" href="/theme.css">
+    <link rel="stylesheet" href="/auth.css">
+    <script src="/auth.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <main class="auth-page">
+        <aside class="auth-aside" aria-label="معرفی سامانه">
+            <a class="company-brand" href="/login" aria-label="پردازش روبین پرهام">
+                <img src="/robin-mark.svg" alt="نشان پردازش روبین پرهام">
+                <span>
+                    <strong>پردازش روبین پرهام</strong>
+                    <span>سامانهٔ هوشمند مدیریت سازمان</span>
+                </span>
+            </a>
+
+            <div class="auth-aside-copy">
+                <p class="eyebrow">یکپارچه، ساده، قابل اتکا</p>
+                <h1>تصمیم‌های بهتر،<br>با دیدی روشن‌تر.</h1>
+                <p>به فضای کاری سازمان خوش آمدید. شاخص‌ها، تیم‌ها، جلسات و پروژه‌ها را در یک نمای منسجم دنبال کنید.</p>
+            </div>
+
+            <ul class="auth-highlights">
+                <li><span class="auth-check" aria-hidden="true">✓</span> نمایی یکپارچه از وضعیت سازمان</li>
+                <li><span class="auth-check" aria-hidden="true">✓</span> دسترسی سریع به تیم‌ها و پروژه‌ها</li>
+                <li><span class="auth-check" aria-hidden="true">✓</span> تجربهٔ بهینه در موبایل و دسکتاپ</li>
+            </ul>
+        </aside>
+
+        <section class="auth-main" aria-labelledby="loginTitle">
+            <div class="auth-card">
+                <a class="company-brand auth-mobile-brand" href="/login" aria-label="پردازش روبین پرهام">
+                    <img src="/robin-mark.svg" alt="نشان پردازش روبین پرهام">
+                    <span>
+                        <strong>پردازش روبین پرهام</strong>
+                        <span>سامانهٔ مدیریت سازمان</span>
+                    </span>
+                </a>
+
+                <h1 class="auth-title" id="loginTitle">ورود به حساب کاربری</h1>
+                <p class="auth-subtitle">برای ادامه، اطلاعات ورود خود را وارد کنید.</p>
+
+                <form id="loginForm" autocomplete="on" novalidate>
+                    <div class="auth-field">
+                        <label for="username">نام کاربری</label>
+                        <input class="auth-input" id="username" name="username" type="text"
+                            placeholder="نام کاربری خود را وارد کنید" autocomplete="username" autocapitalize="none"
+                            spellcheck="false" required>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="password">رمز عبور</label>
+                        <div class="auth-input-wrap">
+                            <input class="auth-input has-action" id="password" name="password" type="password"
+                                placeholder="رمز عبور خود را وارد کنید" autocomplete="current-password" required>
+                            <button class="password-toggle" id="passwordToggle" type="button"
+                                aria-label="نمایش رمز عبور" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="auth-error" id="loginError" role="alert" aria-live="polite"></p>
+                    <button class="auth-submit" id="loginSubmit" type="submit">ورود به داشبورد</button>
+                </form>
+
+                <section class="demo-credentials" aria-label="اطلاعات ورود پیش‌فرض">
+                    <strong>اطلاعات ورود پیش‌فرض این نسخه</strong>
+                    <p><span>نام کاربری</span><code>admin</code></p>
+                    <p><span>رمز عبور</span><code>Robin1404!</code></p>
+                </section>
+
+                <p class="auth-footer">این نسخه برای نمایش و نمونه‌سازی است؛ برای استفادهٔ واقعی، احراز هویت سمت سرور و
+                    سیاست رمز امن لازم است.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
